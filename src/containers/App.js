@@ -32,15 +32,22 @@ class App extends Component
 		const filterrobots=robots.filter(robots=>{
 			return robots.name.toLowerCase().includes(searchfield.toLowerCase())
 		})
-		return !robots.length?
-		 <h1>Loading</h1>:
-		          <div className='tc'>
+		if(robots.length===0)
+		{
+		 return <h1>Loading</h1>
+		}else
+		{
+			return( <div className='tc'>
 		           <h1 className='f1'>RoboFriends</h1>
 		           <Searchbox searchchange={this.onsearchchange}/>
 		           <Scroll>
 		            <Cardlist robots={filterrobots}/>
 		           </Scroll>
 		          </div>
+				)
+		}
+		         
+		
 }
 }
 export default App;
